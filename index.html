@@ -6,146 +6,438 @@
     <title>Sumit Motghare | Engineering Manager | AWS-Native SaaS & AI-Native Platforms</title>
     <meta name="description" content="Engineering Manager leading AWS-native SaaS and AI-native platforms. LLMs, AWS Bedrock, MCP, agents, Cursor IDE, Strands SDK. Pune, India. Open to remote roles.">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #f8fbff;
+            --bg-secondary: #eef4ff;
+            --surface: rgba(255, 255, 255, 0.88);
+            --surface-border: rgba(123, 151, 198, 0.28);
+            --text-primary: #1d2a44;
+            --text-secondary: #415373;
+            --text-muted: #667799;
+            --brand: #2b7be8;
+            --brand-strong: #1f69cf;
+            --success: #18876b;
+            --radius: 16px;
+            --shadow: 0 12px 28px rgba(31, 56, 99, 0.12);
+            --container: 1040px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: #fafafa;
+            color: var(--text-primary);
+            background:
+                radial-gradient(circle at 15% 10%, rgba(43, 123, 232, 0.16), transparent 35%),
+                radial-gradient(circle at 90% 20%, rgba(24, 135, 107, 0.1), transparent 28%),
+                linear-gradient(160deg, var(--bg-primary), var(--bg-secondary));
+            min-height: 100vh;
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        header { text-align: center; padding: 80px 0 60px; background: linear-gradient(135deg, #f8f9ff 0%, #e8f4fd 100%); }
-        h1 { font-size: 3.5rem; font-weight: 700; color: #1a1a1a; margin-bottom: 0.5rem; }
-        .subtitle { font-size: 1.5rem; color: #666; margin-bottom: 2rem; }
-        .pitch { font-size: 1.25rem; max-width: 700px; margin: 0 auto 3rem; color: #444; }
-        .cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2rem; }
-        .btn { 
-            padding: 12px 24px; 
-            border: none; 
-            border-radius: 8px; 
-            font-size: 1rem; 
-            font-weight: 600; 
-            cursor: pointer; 
-            text-decoration: none; 
-            display: inline-block; 
-            transition: all 0.3s; 
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
-        .btn-primary { background: #0d6efd; color: white; }
-        .btn-primary:hover { background: #0b5ed7; transform: translateY(-2px); }
-        .btn-secondary { background: transparent; color: #0d6efd; border: 2px solid #0d6efd; }
-        .btn-secondary:hover { background: #0d6efd; color: white; }
-        section { padding: 80px 0; }
-        h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #1a1a1a; }
-        .about-text { font-size: 1.2rem; max-width: 700px; margin: 0 auto; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .skill-group { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .skill-group h3 { color: #0d6efd; margin-bottom: 1rem; font-size: 1.3rem; }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .skill-tag { background: #e3f2fd; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.9rem; font-weight: 500; color: #1976d2; }
-        .experience-grid { display: grid; gap: 2rem; }
-        .exp-card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 4px solid #0d6efd; }
-        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
-        .exp-title { font-size: 1.4rem; font-weight: 600; color: #1a1a1a; }
-        .exp-meta { font-size: 0.95rem; color: #666; }
-        .exp-bullets { list-style: none; }
-        .exp-bullets li { padding: 0.8rem 0; border-bottom: 1px solid #f0f0f0; }
-        .exp-bullets li:last-child { border-bottom: none; }
-        .exp-bullets strong { color: #0d6efd; }
-        footer { text-align: center; padding: 40px 0; background: #f8f9fa; color: #666; font-size: 0.95rem; }
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .subtitle { font-size: 1.25rem; }
-            .cta { flex-direction: column; align-items: center; }
+
+        .container {
+            width: min(100% - 2.5rem, var(--container));
+            margin: 0 auto;
+        }
+
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+            background: rgba(248, 251, 255, 0.84);
+            border-bottom: 1px solid rgba(126, 147, 182, 0.18);
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 0;
+        }
+
+        .nav-brand {
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.15rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        header {
+            padding: 6rem 0 3.5rem;
+        }
+
+        .hero {
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 3.4rem;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--success);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            color: var(--text-secondary);
+            margin-bottom: 1.6rem;
+        }
+
+        .pitch {
+            max-width: 62ch;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+        }
+
+        .availability {
+            color: var(--text-primary);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.78rem 1.1rem;
+            border: 1px solid transparent;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--brand);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background: var(--brand-strong);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.66);
+            color: var(--text-primary);
+            border-color: rgba(123, 151, 198, 0.35);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(241, 247, 255, 0.96);
+            border-color: rgba(91, 126, 178, 0.4);
+        }
+
+        section {
+            padding: 2.8rem 0;
+        }
+
+        .section-card {
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            border-radius: var(--radius);
+            padding: 2.2rem;
+            box-shadow: var(--shadow);
+        }
+
+        h2 {
+            font-size: clamp(1.65rem, 3.5vw, 2.2rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-intro {
+            color: var(--text-secondary);
+            max-width: 72ch;
+            margin-bottom: 1.8rem;
+        }
+
+        .about-points {
+            display: grid;
+            gap: 0.8rem;
+            padding-left: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .about-points li strong {
+            color: var(--text-primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 1.35rem;
+        }
+
+        .skill-group {
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(123, 151, 198, 0.22);
+            border-radius: 12px;
+            padding: 1.2rem;
+        }
+
+        .skill-group h3 {
+            color: var(--brand);
+            margin-bottom: 0.7rem;
+            font-size: 1.02rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+        }
+
+        .skill-tag {
+            background: rgba(43, 123, 232, 0.1);
+            border: 1px solid rgba(43, 123, 232, 0.22);
+            color: #234f8d;
+            padding: 0.34rem 0.62rem;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+
+        .experience-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.35rem;
+        }
+
+        .exp-card {
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid rgba(123, 151, 198, 0.22);
+            border-radius: 12px;
+            padding: 1.4rem;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .exp-meta {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .exp-bullets strong {
+            color: var(--text-primary);
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .contact-row p {
+            color: var(--text-secondary);
+            max-width: 54ch;
+        }
+
+        footer {
+            padding: 2.2rem 0 2.8rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        footer a {
+            color: var(--brand);
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                gap: 0.8rem;
+                font-size: 0.88rem;
+            }
+
+            .hero {
+                padding: 2rem 1.3rem;
+            }
+
+            .section-card {
+                padding: 1.6rem 1.2rem;
+            }
+
+            .cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
+    <nav class="site-nav">
+        <div class="container nav-inner">
+            <div class="nav-brand">Sumit Motghare</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
     <header>
         <div class="container">
-            <h1>Sumit Motghare</h1>
-            <p class="subtitle">Engineering Manager | AWS-Native SaaS & AI-Native Platforms</p>
-            <p class="pitch">
-                I lead engineering teams building scalable, secure SaaS platforms on AWS, now infused with modern AI systems—LLMs, intelligent agents, MCP-based tooling, and AWS Bedrock—while growing people, improving processes, and shipping real value for product and customers.
-            </p>
-            <p class="pitch" style="font-size: 1.1rem; font-weight: 500; color: #1a1a1a;">
-                Based in Pune, India – open to remote and hybrid roles in AI-native, AWS-native SaaS organizations.
-            </p>
-            <div class="cta">
-                <a href="#experience" class="btn btn-primary">View my experience</a>
-                <a href="https://github.com/sumitmotghare" class="btn btn-secondary" target="_blank">See projects on GitHub</a>
-                <a href="#contact" class="btn btn-secondary">Download my CV</a>
-                <a href="https://www.linkedin.com/in/sumit-m-bbb61867/" class="btn btn-secondary" target="_blank">Connect on LinkedIn</a>
+            <div class="hero">
+                <span class="hero-kicker">AI-native engineering leadership</span>
+                <h1>Sumit Motghare</h1>
+                <p class="subtitle">Engineering Manager | AWS-Native SaaS & AI-Native Platforms</p>
+                <p class="pitch">
+                    I lead engineering teams building scalable, secure SaaS platforms on AWS, now infused with modern AI systems, including LLMs, intelligent agents, MCP-based tooling, and AWS Bedrock.
+                </p>
+                <p class="availability">
+                    Based in Pune, India - open to remote and hybrid roles in AI-native, AWS-native SaaS organizations.
+                </p>
+                <div class="cta">
+                    <a href="#experience" class="btn btn-primary">View Experience</a>
+                    <a href="https://github.com/sumitmotghare" class="btn btn-secondary" target="_blank" rel="noreferrer">GitHub Projects</a>
+                    <a href="https://www.linkedin.com/in/sumit-m-bbb61867/" class="btn btn-secondary" target="_blank" rel="noreferrer">LinkedIn</a>
+                    <a href="https://github.com/sumitmotghare/sumitmotghare/blob/main/SumitMotghare_Resume.pdf" class="btn btn-secondary" target="_blank" rel="noreferrer">Download CV</a>
+                </div>
             </div>
         </div>
     </header>
 
     <section id="about">
         <div class="container">
-            <h2 style="text-align: center;">AI-Native Engineering Leadership</h2>
-            <div class="about-text" style="max-width: 800px; margin: 0 auto 3rem; text-align: center;">
-                <p>Over the last couple of years, I've moved from "AI-adjacent" to <strong>AI-native engineering leadership</strong>:</p>
-                <ul style="text-align: left; max-width: 600px; margin: 2rem auto; font-size: 1.15rem;">
-                    <li>Working hands-on with <strong>LLMs, MCP servers, and AI-assisted development tools</strong> (Cursor IDE, Strands SDK, etc.) to refactor, debug, and ship code at pace.</li>
-                    <li>Orchestrating <strong>AI agents and tool-chains on AWS Bedrock</strong>, including stateful MCP sessions and multi-agent workflows that connect to cloud services, databases, and APIs.</li>
-                    <li>Leading teams in the <strong>AI era</strong> where developers work shoulder-to-shoulder with AI assistants, architecture is "AI-first" and "LLM-aware", and guardrails (security, observability) are built-in.</li>
+            <div class="section-card">
+                <h2>AI-Native Engineering Leadership</h2>
+                <p class="section-intro">
+                    Over the last few years, I have moved from AI-adjacent delivery to AI-native leadership, blending product impact, engineering rigor, and practical adoption of modern AI tooling.
+                </p>
+                <ul class="about-points">
+                    <li>Working hands-on with <strong>LLMs, MCP servers, and AI-assisted development tools</strong> (Cursor IDE, Strands SDK) to refactor, debug, and ship faster.</li>
+                    <li>Orchestrating <strong>AI agents and tool-chains on AWS Bedrock</strong>, including stateful MCP sessions and multi-agent workflows connected to cloud services and APIs.</li>
+                    <li>Leading teams in an <strong>AI-first operating model</strong> where architecture decisions remain secure, observable, and production-ready.</li>
                 </ul>
-                <p><strong>My goal:</strong> Make AI boost developer velocity and product innovation, without compromising stability, security, or team health.</p>
             </div>
         </div>
     </section>
 
     <section id="skills">
         <div class="container">
-            <h2 style="text-align: center;">Skills & Tech Stack</h2>
-            <p class="about-text" style="text-align: center; margin-bottom: 3rem; font-size: 1.15rem;">
-                My technical roots are in full-stack and backend engineering, with a strong focus on production-ready, cloud-native systems. Today, I stay close enough to the code to design and review, while making space for the team to grow and lead.
-            </p>
-            <div class="skills-grid">
-                <div class="skill-group">
-                    <h3>🌐 Cloud & AWS</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AWS (Bedrock, ECS/Fargate, Lambda)</span>
-                        <span class="skill-tag">Multi-tenant SaaS</span>
-                        <span class="skill-tag">Event-driven architecture</span>
-                        <span class="skill-tag">Observability & Cost governance</span>
+            <div class="section-card">
+                <h2>Skills &amp; Tech Stack</h2>
+                <p class="section-intro">
+                    My roots are in full-stack and backend engineering with a strong focus on production-ready cloud systems. I stay close enough to code and architecture to guide technical quality while scaling teams.
+                </p>
+                <div class="skills-grid">
+                    <div class="skill-group">
+                        <h3>Cloud &amp; AWS</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">AWS (Bedrock, ECS/Fargate, Lambda)</span>
+                            <span class="skill-tag">Multi-tenant SaaS</span>
+                            <span class="skill-tag">Event-driven architecture</span>
+                            <span class="skill-tag">Observability and cost governance</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-group">
-                    <h3>🤖 AI & LLMs</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">LLMs & Agents</span>
-                        <span class="skill-tag">AWS Bedrock</span>
-                        <span class="skill-tag">MCP servers</span>
-                        <span class="skill-tag">Cursor IDE</span>
-                        <span class="skill-tag">Strands SDK</span>
+                    <div class="skill-group">
+                        <h3>AI &amp; LLMs</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">LLMs and agents</span>
+                            <span class="skill-tag">AWS Bedrock</span>
+                            <span class="skill-tag">MCP servers</span>
+                            <span class="skill-tag">Cursor IDE</span>
+                            <span class="skill-tag">Strands SDK</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-group">
-                    <h3>⚙️ DevOps & Platforms</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">CI/CD (GitHub Actions)</span>
-                        <span class="skill-tag">Docker, Kubernetes</span>
-                        <span class="skill-tag">Terraform, IaC</span>
-                        <span class="skill-tag">Monitoring & Logging</span>
+                    <div class="skill-group">
+                        <h3>DevOps &amp; Platforms</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">CI/CD (GitHub Actions)</span>
+                            <span class="skill-tag">Docker and Kubernetes</span>
+                            <span class="skill-tag">Terraform and IaC</span>
+                            <span class="skill-tag">Monitoring and logging</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-group">
-                    <h3>💻 Languages & Frameworks</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Node.js</span>
-                        <span class="skill-tag">PHP</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">TypeScript</span>
+                    <div class="skill-group">
+                        <h3>Languages &amp; Frameworks</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">TypeScript</span>
+                        </div>
                     </div>
-                </div>
-                <div class="skill-group">
-                    <h3>👥 Leadership</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Team management (10-20 engineers)</span>
-                        <span class="skill-tag">Mentoring & Hiring</span>
-                        <span class="skill-tag">Agile/Scrum</span>
-                        <span class="skill-tag">Stakeholder communication</span>
+                    <div class="skill-group">
+                        <h3>Leadership</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Team management (10-20 engineers)</span>
+                            <span class="skill-tag">Mentoring and hiring</span>
+                            <span class="skill-tag">Agile and scrum</span>
+                            <span class="skill-tag">Stakeholder communication</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,39 +446,40 @@
 
     <section id="experience">
         <div class="container">
-            <h2 style="text-align: center;">Experience</h2>
-            <p class="about-text" style="text-align: center; margin-bottom: 3rem;">
-                Highlights from my journey as an engineer and Engineering Manager building cloud-native platforms and teams. Each role summarized with impact, not just responsibilities.
-            </p>
-            <div class="experience-grid">
-                <!-- Add your experience cards here -->
-                <div class="exp-card">
-                    <div class="exp-header">
-                        <div class="exp-title">Engineering Manager</div>
-                        <div class="exp-meta">Entrata India | Pune, India | 202X – Present</div>
+            <div class="section-card">
+                <h2>Experience</h2>
+                <p class="section-intro">
+                    Highlights from my journey as an engineer and Engineering Manager building cloud-native products and high-performing teams.
+                </p>
+                <div class="experience-grid">
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <div class="exp-title">Engineering Manager</div>
+                            <div class="exp-meta">Entrata India | Pune, India | 202X - Present</div>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li><strong>Led an AI-first squad</strong> building internal LLM-assisted workflows on AWS Bedrock to accelerate iteration and reduce lead time.</li>
+                            <li><strong>Owned cloud-cost governance</strong> across 50+ services, reducing avoidable spend through rightsizing, autoscaling, and reserved capacity planning.</li>
+                            <li><strong>Introduced MCP-based tooling and agent patterns</strong> with IAM-based guardrails to improve developer productivity without compromising security.</li>
+                        </ul>
                     </div>
-                    <ul class="exp-bullets">
-                        <li><strong>Led AI-first squad</strong> experimenting with LLM-based internal tools on AWS Bedrock, using Cursor and Strands SDK to accelerate prototyping and iteration.</li>
-                        <li><strong>Owned cloud-cost governance</strong> for 50+ services, cutting unnecessary spend by ~25% through rightsizing, autoscaling, and reserved instance planning.</li>
-                        <li><strong>Introduced MCP-based tooling</strong> and agent patterns to help developers get AI-assisted guidance while keeping security and IAM-based guardrails in place.</li>
-                    </ul>
                 </div>
-                <!-- Add more cards as needed -->
             </div>
         </div>
     </section>
 
     <section id="contact">
         <div class="container">
-            <h2 style="text-align: center;">Let's connect</h2>
-            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                    Open to: <strong>Senior Engineering Manager roles in AI-native, AWS-native SaaS</strong> organizations.
-                </p>
-                <div class="cta" style="justify-content: center;">
-                    <a href="https://github.com/sumitmotghare/sumitmotghare/blob/main/SumitMotghare_Resume.pdf" class="btn btn-primary" download>Download my CV</a>
-                    <a href="https://www.linkedin.com/in/sumit-m-bbb61867/" class="btn btn-secondary" target="_blank">Connect on LinkedIn</a>
-                    <a href="mailto:sumitmotghare7292@gmail.com" class="btn btn-secondary">Send me an email</a>
+            <div class="section-card">
+                <h2>Let's Connect</h2>
+                <div class="contact-row">
+                    <p>
+                        Open to senior engineering leadership roles in AI-native, AWS-native SaaS organizations focused on product impact and scalable platform engineering.
+                    </p>
+                    <div class="cta">
+                        <a href="mailto:sumitmotghare7292@gmail.com" class="btn btn-primary">Email Me</a>
+                        <a href="https://www.linkedin.com/in/sumit-m-bbb61867/" class="btn btn-secondary" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -194,7 +487,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Sumit Motghare. Built with ❤️ on GitHub Pages. | <a href="https://sumitmotghare.info">sumitmotghare.info</a></p>
+            <p>&copy; 2026 Sumit Motghare | <a href="https://sumitmotghare.info" target="_blank" rel="noreferrer">sumitmotghare.info</a></p>
         </div>
     </footer>
 </body>
